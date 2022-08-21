@@ -4,7 +4,7 @@ import TaskList from "./components/TaskList";
 
 const App = () => {
   return (
-    <main className="bg-zinc-900 h-screen">
+    <main>
       <div className="container mx-auto p-10">
         <TaskForm />
         <TaskList />
