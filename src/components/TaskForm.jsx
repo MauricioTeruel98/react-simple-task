@@ -46,7 +46,16 @@ const TaskForm = () => {
           value={description}
           className="bg-slate-300 p-3 w-full rounded-md text-white mb-2"
         ></textarea>
-        <button className="bg-indigo-500 px-3 py-1 text-white rounded-md hover:bg-indigo-600">Guardar</button>
+        {
+          title.length > 0 && description.length > 0 ? (
+            <button className="bg-indigo-500 px-3 py-1 text-white rounded-md hover:bg-indigo-600">Guardar</button>
+          ) : (
+            <div className="flex">
+              <button className="bg-slate-500 px-3 py-1 text-white rounded-md" disabled>Guardar</button>
+              <h1 className="text-red-500 text-left mx-4 mt-1">Debes completar el formulario</h1>
+            </div>
+          )
+        }
       </form>
     </div>
   );

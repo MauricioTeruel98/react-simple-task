@@ -14,12 +14,27 @@ export function TaskContextProvider({ children }) {
         title: task.title,
         id: tasks.length + 1,
         description: task.description,
+        isDone: false,
       },
     ]);
   };
 
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  const toggleTask = (id) => {
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            isDone: !task.isDone,
+          };
+        }
+        return task;
+      }),
+    );
   };
 
   useEffect(() => {
@@ -33,6 +48,7 @@ export function TaskContextProvider({ children }) {
             tasks,
             createTask,
             deleteTask,
+            toggleTask,
         }}>
             {children}
         </TaskContext.Provider>
